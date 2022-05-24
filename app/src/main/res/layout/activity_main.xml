@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:src="@drawable/ic_back"
+            />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/txtDangki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="116dp"
+        android:layout_marginBottom="26dp"
+
+        android:text="Đăng kí tài khoản"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/edtTentaikhoan"
+        android:layout_width="372dp"
+        android:layout_height="46dp"
+        android:layout_below="@+id/txtDangki"
+        android:layout_centerInParent="true"
+        android:background="@drawable/botron"
+        android:hint="Tên tài khoản"
+        android:textColor="@color/black"
+        android:textColorHint="#ACA1A1" />
+    <EditText
+        android:id="@+id/edtMatkhau"
+        android:layout_width="372dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="20dp"
+        android:hint="Nhập mật khẩu"
+        android:background="@drawable/botron"
+        android:textColor="@color/black"
+        android:textColorHint="#ACA1A1"
+        android:layout_below="@+id/edtTentaikhoan"
+        android:layout_centerInParent="true"
+        />
+    <EditText
+        android:id="@+id/edtMatkhau2"
+        android:layout_width="372dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="20dp"
+        android:hint="Nhập lại mật khẩu"
+        android:background="@drawable/botron"
+        android:textColorHint="#ACA1A1"
+        android:textColor="@color/black"
+        android:layout_below="@+id/edtMatkhau"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/btnTieptuc"
+        android:layout_width="372dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/edtMatkhau2"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/botron"
+        android:text="Tiếp Tục" />
+    <TextView
+        android:id="@+id/txtError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:textSize="15dp"
+        android:layout_below="@+id/btnTieptuc"/>
+    <TextView
+        android:id="@+id/txtError2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:textSize="15dp"
+        android:layout_below="@+id/txtError"/>
+
+
+
+
+</RelativeLayout>
