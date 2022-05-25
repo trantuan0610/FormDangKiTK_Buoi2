@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     EditText tendangnhap , matkhau1,matkhau2;
     Button tieptuc;
     TextView error, error2;
-    String s;
+    int check1 = 1,check2 = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,55 +32,69 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String Name = tendangnhap.getText().toString();
-                String Pass = matkhau1.getText().toString();
-                String Pass2 = matkhau2.getText().toString();
-                String Er = error.getText().toString();
-                String Er2 = error2.getText().toString();
-                if(Name.length() < 6){
-                    error.setText("Tên tài khoản phải dài hơn 6 kí tự");
-                    tendangnhap.setBackgroundColor(getColor(R.color.red2));
-
-                }else if (Name.length() >= 6){
-                    int count = 0;
-                    for(int i=0;i<Name.length();i++){
-                        String s =Name.trim();
-                        char kytu = s.charAt(i);
-                        if (Character.isSpace(kytu)){
-                            count++;
-                        }
-                    }
-                    if(count>0){
-
-                        error.setText("Tên đăng nhập không được chứa khoảng trắng");
-                        tendangnhap.setBackgroundColor(getColor(R.color.red2));
-                    }else {
-                        error.setText(" ");
-                        tendangnhap.setBackgroundColor(getColor(R.color.graylight));
-                    }
-
-                }
-
-
-                if(Pass.length() < 8){
-                    error2.setText("Mật Khẩu Phải nhiều hơn 8 kí tự");
-                    matkhau1.setBackgroundColor(getColor(R.color.red2));
-                }else
-                    if (!Pass.equals(Pass2)){
-                    error2.setText("Mật khẩu không trùng khớp");
-                        matkhau1.setBackgroundColor(getColor(R.color.red2));
-                        matkhau2.setBackgroundColor(getColor(R.color.red2));
-                }else
-                {
-
-                    error.setText(" ");
-                    error2.setText(" ");
-                    matkhau1.setBackgroundColor(getColor(R.color.graylight));
-                    matkhau2.setBackgroundColor(getColor(R.color.graylight));
-                    Toast.makeText(MainActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                }
-
+            validationTenDangNhap(tendangnhap);
+            validationMK(matkhau1,matkhau2);
+            if(check1 == 0 && check2 == 0){
+                Toast.makeText(MainActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(MainActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+            }
             }
         });
+
+
+    }
+    private void validationTenDangNhap(EditText tendangnhap){
+        String Name = tendangnhap.getText().toString();
+        if(Name.length() < 6){
+            error.setText("Tên tài khoản phải dài hơn 6 kí tự");
+
+            tendangnhap.setBackground(getDrawable(R.drawable.botron_loi));
+            check1 = 1;
+
+        }else if (Name.length() >= 6){
+            int count = 0;
+            for(int i=0;i<Name.length();i++){
+                String s =Name.trim();
+                char kytu = s.charAt(i);
+                if (Character.isSpace(kytu)){
+                    count++;
+                }
+            }
+            if(count>0){
+
+                error.setText("Tên đăng nhập không được chứa khoảng trắng");
+                check1 =1;
+                tendangnhap.setBackground(getDrawable(R.drawable.botron_loi));
+            }else {
+                error.setText("");
+                tendangnhap.setBackground(getDrawable(R.drawable.botron));
+                check1 = 0;
+            }
+
+        }
+    }
+    private void validationMK(EditText matkhau1,EditText matkhau2){
+        String Pass = matkhau1.getText().toString();
+        String Pass2 = matkhau2.getText().toString();
+
+        if(Pass.length() < 8){
+            error2.setText("Mật Khẩu Phải nhiều hơn 8 kí tự");
+            check2 =1;
+            matkhau1.setBackground(getDrawable(R.drawable.botron_loi));
+        }else
+        if (!Pass.equals(Pass2)){
+            error2.setText("Mật khẩu không trùng khớp");
+            check2 =1;
+            matkhau1.setBackground(getDrawable(R.drawable.botron_loi));
+            matkhau2.setBackground(getDrawable(R.drawable.botron_loi));
+
+        }else {
+            error2.setText("");
+            matkhau1.setBackground(getDrawable(R.drawable.botron));
+            matkhau1.setBackground(getDrawable(R.drawable.botron));
+            check2 = 0;
+        }
+
     }
 }
